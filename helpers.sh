@@ -14,7 +14,7 @@ if [ -z ${TOOLS_FOLDER+x} ]; then
 	elif [ -d ../_tools ]; then
 		TOOLS_FOLDER=$(realpath ../_tools)
 	else
-		TOOLS_FOLDER=$(realpath tools)
+		TOOLS_FOLDER=$(pwd)/tools
 	fi
 	export TOOLS_FOLDER
 fi
@@ -22,6 +22,10 @@ fi
 # Set USER when running on msys.
 if [ "$OSTYPE" == "msys" ]; then
 	export USER="$USERNAME"
+fi
+
+if [ -z ${USER+x} ]; then
+	USER="unknown"
 fi
 
 echo "**********************************************"
