@@ -77,6 +77,7 @@ RUN 	apt-get update && \
         rm -rf /var/lib/apt/lists/*
 EOF
 	if [ -f ./requirements.txt ]; then
+		cp ./requirements.txt "$(dirname "$DOCKERFILE")"
 		cat <<EOF >>"$DOCKERFILE"
 # Copy requirements and install them
 COPY ./requirements.txt /
